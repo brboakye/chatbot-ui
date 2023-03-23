@@ -19,6 +19,8 @@ export const OpenAIModels: Record<OpenAIModelID, OpenAIModel> = {
   }
 };
 
+export const DefaultOpenAIModel: OpenAIModel = OpenAIModels[OpenAIModelID.GPT_4];
+
 export interface Message {
   role: Role;
   content: string;
