@@ -122,14 +122,14 @@ export const ChatInput: FC<Props> = ({ onSend, messageIsStreaming, model, stopCo
       </div>
       <div className="px-3 pt-2 pb-3 text-center text-xs text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
         <a
-          href="https://github.com/brboakye/chatbot-ui"
+          href="https://github.com/mckaywrigley/chatbot-ui"
           target="_blank"
           rel="noreferrer"
           className="underline"
         >
-          CIHRMGPT UI
+          ChatBot UI
         </a>
-        . CIHRMGPT UI is an advanced chatbot kit powered by OpenAI&apos;s chat models aiming to mimic ChatGPT&apos;s interface and functionality.
+        . Chatbot UI is an advanced chatbot kit for OpenAI&apos;s chat models aiming to mimic ChatGPT&apos;s interface and functionality.
       </div>
     </div>
   );
