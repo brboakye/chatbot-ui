@@ -82,7 +82,7 @@ export default function Home() {
       }
 
       if (updatedConversation.messages.length === 1) {
-        const {content} = message
+        const { content } = message;
         const customName = content.length > 30 ? content.substring(0, 30) + "..." : content;
 
         updatedConversation = {
@@ -291,7 +291,9 @@ export default function Home() {
   }, [selectedConversation]);
 
   useEffect(() => {
-    fetchModels(apiKey);
+    if (apiKey) {
+      fetchModels(apiKey);
+    }
   }, [apiKey]);
 
   useEffect(() => {
@@ -300,9 +302,10 @@ export default function Home() {
       setLightMode(theme as "dark" | "light");
     }
 
-    const apiKey = localStorage.getItem("apiKey") || "";
+    const apiKey = localStorage.getItem("apiKey");
     if (apiKey) {
       setApiKey(apiKey);
+      fetchModels(apiKey);
     }
 
     if (window.innerWidth < 640) {
@@ -330,8 +333,6 @@ export default function Home() {
         prompt: DEFAULT_SYSTEM_PROMPT
       });
     }
-
-    fetchModels(apiKey);
   }, []);
 
   return (
@@ -352,7 +353,7 @@ export default function Home() {
         />
       </Head>
       {selectedConversation && (
-        <div className={`flex flex-col h-screen w-screen text-white dark:text-white text-sm ${lightMode}`}>
+        <main className={`flex flex-col h-screen w-screen text-white dark:text-white text-sm ${lightMode}`}>
           <div className="sm:hidden w-full fixed top-0">
             <Navbar
               selectedConversation={selectedConversation}
@@ -360,7 +361,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex h-full w-full pt-[48px] sm:pt-0">
+          <article className="flex h-full w-full pt-[48px] sm:pt-0">
             {showSidebar ? (
               <>
                 <Sidebar
@@ -396,6 +397,7 @@ export default function Home() {
             <Chat
               conversation={selectedConversation}
               messageIsStreaming={messageIsStreaming}
+              apiKey={apiKey}
               modelError={modelError}
               messageError={messageError}
               models={models}
@@ -405,8 +407,8 @@ export default function Home() {
               onUpdateConversation={handleUpdateConversation}
               stopConversationRef={stopConversationRef}
             />
-          </div>
-        </div>
+          </article>
+        </main>
       )}
     </>
   );
