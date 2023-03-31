@@ -1,1 +1,5 @@
-export const DEFAULT_SYSTEM_PROMPT = "Welcome to CIHRM GHANA's CHATBOT powered by OpenAI's ChatGPT. This site is currently under test. Ask HR related questions as well. Thank you"
+export const DEFAULT_SYSTEM_PROMPT =
+  process.env.DEFAULT_SYSTEM_PROMPT || "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.";
+
+export const OPENAI_API_HOST =
+  process.env.OPENAI_API_HOST || 'https://api.openai.com';
